@@ -1,9 +1,3 @@
-// MILESTONE 2
-// Adesso rimuoviamo tutto il markup statico e inseriamo tutte le immagini dinamicamente servendoci dell’array fornito e un semplice ciclo for che concatena un template literal. Tutte le immagini saranno nascoste, tranne la prima, che avrà una classe specifica che la renderà visibile. Al termine di questa fase ci ritroveremo con lo stesso slider stilato nella milestone 1, ma costruito dinamicamente attraverso JavaScript.
-
-// MILESTONE 3
-// Al click dell’utente sulle frecce, il programma cambierà l’immagine attiva, che quindi verrà visualizzata al posto della precedente.
-
 //CREO L'ARRAY PER LE IMMAGINI
 const carlouselImg = [
   "img/01.webp",
@@ -12,6 +6,8 @@ const carlouselImg = [
   "img/04.webp",
   "img/05.webp",
 ];
+
+console.log(carlouselImg);
 
 //prendo il container dove inserire i div con le immagini
 const itemsContainer = document.querySelector(".items-container");
@@ -39,14 +35,20 @@ allItems[activeItem].classList.add("active");
 //recupero i bottoni per lo slide
 const next = document.querySelector(".next-btn");
 
-//aggiungiamo l'evendo al click della freccia next per scorrere le immagini
+//aggiungiamo l'evento al click della freccia next per scorrere le immagini
 next.addEventListener("click", function () {
-  //diciamo prima di rimuovere la classe active dall elemento corrente
-  allItems[activeItem].classList.remove("active");
-  //passiamo all'elemento successivo aggiungendo 1 alla variabile activeItem in modo da passare all'elemento successivo
-  activeItem++;
-  //e poi naggiungiamo la classe item di nuovo e andrà sull'elemento successivo
-  allItems[activeItem].classList.add("active");
+  //creiamo la condizione per verificare se siamo arrivati alla fine dell'array
+  //ci sarà l' array.lengt - 1 perché lenght prende gli conta il totale ma gli elementi partono da 0
+  if (activeItem < carlouselImg.length - 1) {
+    //diciamo prima di rimuovere la classe active dall elemento corrente
+    allItems[activeItem].classList.remove("active");
+    //passiamo all'elemento successivo aggiungendo 1 alla variabile activeItem in modo da passare all'elemento successivo
+    activeItem++;
+    //e poi naggiungiamo la classe item di nuovo e andrà sull'elemento successivo
+    allItems[activeItem].classList.add("active");
+  }
 });
 
 const prev = document.querySelector(".prev-btn");
+
+//creo un evento al click della freccia prev per tornare indietro con le immagini
