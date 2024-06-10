@@ -24,6 +24,11 @@ img {
 
 .item {
   height: 300px;
+  display: none;
+}
+
+.active {
+  display: block;
 }
 
 .slider {
