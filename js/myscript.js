@@ -52,3 +52,13 @@ next.addEventListener("click", function () {
 const prev = document.querySelector(".prev-btn");
 
 //creo un evento al click della freccia prev per tornare indietro con le immagini
+prev.addEventListener("click", function () {
+  if (activeItem > 0) {
+    //diciamo prima di rimuovere la classe active dall elemento corrente
+    allItems[activeItem].classList.remove("active");
+    //passiamo all'elemento precedente togliendo 1 alla variabile activeItem in modo da passare all'elemento precedente
+    activeItem = activeItem - 1;
+    //e poi naggiungiamo la classe item di nuovo e andrà sull'elemento precedente
+    allItems[activeItem].classList.add("active");
+  }
+});
